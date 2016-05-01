@@ -8,10 +8,10 @@
 .. image:: https://badge.fury.io/gh/sarnold%2Faf_alg.svg?dummy
    :target: https://badge.fury.io/gh/sarnold%2Faf_alg
 
-.. image:: https://travis-ci.org/sarnold/gwocss.svg?branch=master
+.. image:: https://travis-ci.org/sarnold/af_alg.svg?branch=master
    :target: https://travis-ci.org/sarnold/af_alg
 
-.. image:: https://img.shields.io/github/issues-raw/badges/shields/website.svg
+.. image:: http://githubbadges.herokuapp.com/sarnold/af_alg/issues.svg
    :target: https://github.com/sarnold/af_alg/issues
 
 This is based on RidgeRun's autotools version of the original af_alg project.
