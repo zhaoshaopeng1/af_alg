@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([af-alg-rr], [0.0.0], [carsten.behling@ridgerun.com])
+AC_INIT([af-alg], [0.0.1], [stephen.arnold42@gmail.com])
 AC_CONFIG_SRCDIR([src/ciphers.c])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu])
@@ -47,7 +47,7 @@ PKG_CHECK_MODULES(OPENSSL, [
 ])
 
 # Set the plugindir where plugins should be installed (for src/Makefile.am)
-  plugindir="\$(libdir)/openssl-1.0.0/engines"
+  plugindir="\$(libdir)/ssl/engines"
 AC_SUBST(plugindir)
 
 # Set proper LDFLAGS for plugins

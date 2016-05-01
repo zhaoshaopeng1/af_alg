@@ -8,7 +8,8 @@ libaf_alg_la_SOURCES = aes.h \
 	e_af_alg.c \
 	e_af_alg.h
 
-libaf_alg_la_CFLAGS = $(OPENSSL_CFLAGS)
+libaf_alg_la_CPPFLAGS = -I$(includedir)
+libaf_alg_la_CFLAGS = -std=gnu99 $(OPENSSL_CFLAGS)
 libaf_alg_la_LIBADD = $(OPENSSL_LIBS)
 libaf_alg_la_LDFLAGS = -module -avoid-version $(OPENSSL_LDFLAGS)
 libaf_alg_la_LIBTOOLFLAGS = --tag=disable-static
