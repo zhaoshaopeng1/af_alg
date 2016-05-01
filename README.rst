@@ -25,18 +25,24 @@ Requirements
 Build
 -----
 
+::
+
   ./configure
   make
 
 Install
 -------
 
+::
+
   make install
 
 Test it
 -------
 
-``  $ openssl speed -evp aes-128-cbc -engine af_alg -elapsed``
+::
+
+    $ openssl speed -evp aes-128-cbc -engine af_alg -elapsed
 
 Configuration - openssl config
 ------------------------------
