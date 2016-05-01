@@ -11,7 +11,7 @@
 .. image:: https://travis-ci.org/sarnold/gwocss.svg?branch=master
    :target: https://travis-ci.org/sarnold/af_alg
 
-.. image:: https://img.shields.io/github/issues/badges/shields.svg?maxAge=2592000
+.. image:: https://img.shields.io/github/issues-raw/badges/shields.svg
    :target: https://github.com/sarnold/af_alg/issues
 
 This is based on RidgeRun's autotools version of the original af_alg project.
