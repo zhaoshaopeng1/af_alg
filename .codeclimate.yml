@@ -1,0 +1,12 @@
+engines:
+  fixme:
+    enabled: true
+  gnu-complexity:
+    enabled: true
+    config:
+      threshold: 15
+
+ratings:
+  paths: []
+
+exclude_paths: []
