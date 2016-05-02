@@ -5,13 +5,16 @@
 .. image:: https://img.shields.io/badge/license-openssl-blue.svg?style=plastic
    :target: https://github.com/sarnold/af_alg/blob/master/COPYING
 
-.. image:: https://badge.fury.io/gh/sarnold%2Faf_alg.svg?dummy
+.. image:: https://badge.fury.io/gh/sarnold%2Faf_alg.svg?style=plastic&dummy
    :target: https://badge.fury.io/gh/sarnold%2Faf_alg
 
-.. image:: https://travis-ci.org/sarnold/af_alg.svg?branch=master
+.. image:: https://travis-ci.org/sarnold/af_alg.svg?branch=master&style=plastic
    :target: https://travis-ci.org/sarnold/af_alg
 
-.. image:: http://githubbadges.herokuapp.com/sarnold/af_alg/issues.svg
+.. image:: https://codeclimate.com/github/sarnold/af_alg/badges/gpa.svg?style=plastic
+   :target: https://codeclimate.com/github/sarnold/af_alg
+
+.. image:: http://githubbadges.herokuapp.com/sarnold/af_alg/issues.svg?style=plastic
    :target: https://github.com/sarnold/af_alg/issues
 
 This is based on RidgeRun's autotools version of the original af_alg project.
