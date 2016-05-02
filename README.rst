@@ -11,7 +11,7 @@
 .. image:: https://travis-ci.org/sarnold/af_alg.svg?branch=master
    :target: https://travis-ci.org/sarnold/af_alg
 
-.. image:: https://codeclimate.com/github/sarnold/af_alg/badges/gpa.svg?style=flat
+.. image:: https://codeclimate.com/github/sarnold/af_alg/badges/gpa.svg
    :target: https://codeclimate.com/github/sarnold/af_alg
 
 .. image:: http://githubbadges.herokuapp.com/sarnold/af_alg/issues.svg?style=flat
