@@ -10,7 +10,7 @@ addons:
 
 language: c
 
-script: ./autogen.sh && make
+script: ./autogen.sh && ./configure --prefix=/usr --with-pic && make
 
 install: true
 
