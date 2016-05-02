@@ -1,6 +1,6 @@
 SUBDIRS = src
 
-EXTRA_DIST = autogen.sh
+EXTRA_DIST = autogen.sh README.rst
 
 # Clear dependency_libs for multiarch
 all-local:
