@@ -44,13 +44,78 @@ Test it
 
     $ openssl speed -evp aes-128-cbc -engine af_alg -elapsed
 
-Configuration - openssl config
-------------------------------
+Configuration - openssl and kernel config
+-----------------------------------------
 
-The algorithms run by af_alg can be configured in the openssl.cnf
+The algorithms run by af_alg can be configured in the openssl.cnf file
 by setting the CIPHERS and DIGEST values. Not setting them will speedup nothing.
-Idea is only to run algorithms via af_alg which can be accelerated via hardware.
-As I'm not aware of a way to query this, you have to set them manually.
+The idea is to run algorithms via af_alg which can be accelerated via hardware.
+Since there is no documented "query" interface, you'll need to know your kernel
+config (mainly the cryptographic and library sections) since the key hardware
+drivers are specific to each architecture/machine variant.
+
+In your kernel source tree, do::
+
+    $ sudo make menuconfig
+
+and check/enable the crypto modules and user space modules for your architecture::
+
+    -*- Cryptographic API  --->
+        Library routines  --->
+    
+          --- Cryptographic API
+          *** Crypto core or helper ***
+    <M>   RSA algorithm
+    -*-   Cryptographic algorithm manager
+    <M>   Userspace cryptographic algorithm configuration
+
+The basic required crypto/hash modules are::
+
+    {*}   Authenc support
+    {*}   CCM support
+    {M}   CBC support
+    -*-   CTR support
+    {M}   CTS support
+    {M}   ECB support
+    {M}   LRW support
+    {M}   PCBC support
+    {M}   XTS support
+          *** Hash modes ***
+    {M}   CMAC support
+    -*-   HMAC support
+    -*-   CRC32c CRC algorithm
+    -*-   CRCT10DIF algorithm
+    -*-   GHASH digest algorithm
+    {M}   Poly1305 authenticator algorithm
+    -*-   MD5 digest algorithm
+    -*-   SHA1 digest algorithm
+    -*-   SHA224 and SHA256 digest algorithm
+    {M}   SHA384 and SHA512 digest algorithms
+    -*-   AES cipher algorithms
+    {*}   ARC4 cipher algorithm
+    {M}   CAST5 (CAST-128) cipher algorithm
+    {*}   DES and Triple DES EDE cipher algorithms
+          *** Compression ***
+    {M}   Deflate compression algorithm
+    <*>   LZO compression algorithm
+          *** Random Number Generation ***
+    -*-   NIST SP800-90A DRBG  --->
+    -*-   Jitterentropy Non-Deterministic Random Number Generator
+    [*]   Hardware crypto devices  --->
+    -*-   Asymmetric (public-key cryptographic) key type  --->
+
+The library section is much shorter; if not selected, select the BCJ filter
+decoder that matches your hardware::
+
+    {M} CRC32c (Castagnoli, et al) Cyclic Redundancy-Check
+    <*> XZ decompression support
+    [*]   x86 BCJ filter decoder
+    [ ]   PowerPC BCJ filter decoder
+    [ ]   IA-64 BCJ filter decoder
+    [ ]   ARM BCJ filter decoder
+    [ ]   ARM-Thumb BCJ filter decoder
+    [ ]   SPARC BCJ filter decoder
+
 
 In /etc/ssl/openssl.cnf
 
@@ -78,19 +143,22 @@ Required kernel modules
 
 Make sure you have at least::
 
-  algif_hash             12943  0 
-  algif_skcipher         17369  0 
-  af_alg                 14686  2 algif_hash,algif_skcipher
+    algif_hash             12943  0 
+    algif_skcipher         17369  0 
+    af_alg                 14686  2 algif_hash,algif_skcipher
 
 in your lsmod output.
 
-If you can't load the modules, check that the following options::
+If you can't load the modules, check the kernel config options again.  Grep is
+your friend here::
 
-  CONFIG_CRYPTO_USER_API=m
-  CONFIG_CRYPTO_USER_API_HASH=m
-  CONFIG_CRYPTO_USER_API_SKCIPHER=m
+    $ grep CRYPTO_USER_API /usr/src/linux/.config
 
-are in your kernel config.
+    CONFIG_CRYPTO_USER_API=m
+    CONFIG_CRYPTO_USER_API_HASH=m
+    CONFIG_CRYPTO_USER_API_SKCIPHER=m
+
+and make sure the above modules are in your kernel config.
 
 Performance
 -----------
@@ -113,6 +181,11 @@ provide a significant boost for 8192 size blocks.
 
   engine "builtin" (Cavium Octeon modules)
   aes-128-cbc       9700.32k    86694.40k    91764.36k   646519.47k  2578841.60k
+
+.. Note::
+   The above numbers were generated on an EdgeRouter Lite mips64 system using a mainline kernel.
+   
+   Linux edgerouter 4.5.1 #7 SMP PREEMPT Thu Apr 21 12:37:02 PDT 2016 mips64 Cavium Octeon+ V0.1 UBNT_E100 (CN5020p1.1-500-SCP) GNU/Linux
 
 
 Debugging
