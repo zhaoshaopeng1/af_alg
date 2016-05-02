@@ -1,0 +1,21 @@
+addons:
+  apt:
+    packages:
+    - doxygen
+    - graphviz
+    - libssl-dev
+    - autoconf
+    - automake
+    - libtool
+
+language: c
+
+script: ./autogen.sh && make
+
+install: true
+
+sudo: false
+
+notifications:
+  irc: "chat.freenode.net#code-hell"
+
