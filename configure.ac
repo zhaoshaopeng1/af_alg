@@ -5,7 +5,7 @@ AC_PREREQ([2.68])
 AC_INIT([af-alg], [0.0.1], [stephen.arnold42@gmail.com])
 AC_CONFIG_SRCDIR([src/ciphers.c])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([-Wall -Werror gnu])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 OPENSSL_REQUIRED=1.0.0c
 
