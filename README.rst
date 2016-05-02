@@ -5,7 +5,7 @@
 .. image:: https://img.shields.io/badge/license-openssl-blue.svg?style=flat
    :target: https://github.com/sarnold/af_alg/blob/master/COPYING
 
-.. image:: https://badge.fury.io/gh/sarnold%2Faf_alg.svg&dummy
+.. image:: https://badge.fury.io/gh/sarnold%2Faf_alg.svg?style=flat
    :target: https://badge.fury.io/gh/sarnold%2Faf_alg
 
 .. image:: https://travis-ci.org/sarnold/af_alg.svg?branch=master
