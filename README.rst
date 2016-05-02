@@ -1,6 +1,6 @@
-=====================================
- af_alg crypto interface for OpenSSL
-=====================================
+============================================
+ af_alg Kernel Crypto Interface for OpenSSL
+============================================
 
 .. image:: https://img.shields.io/badge/license-openssl-blue.svg?style=plastic
    :target: https://github.com/sarnold/af_alg/blob/master/COPYING
@@ -157,6 +157,8 @@ your friend here::
     CONFIG_CRYPTO_USER_API=m
     CONFIG_CRYPTO_USER_API_HASH=m
     CONFIG_CRYPTO_USER_API_SKCIPHER=m
+    CONFIG_CRYPTO_USER_API_RNG=m
+    CONFIG_CRYPTO_USER_API_AEAD=m
 
 and make sure the above modules are in your kernel config.
 
@@ -172,15 +174,15 @@ provide a significant boost for 8192 size blocks.
 
 ::
 
-  engine "af_alg"
-  type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes
-  aes-128-cbc       5387.73k    25950.52k   164787.20k   273364.11k  1288192.00k
-
-  engine "cryptodev"
-  aes-128-cbc       5654.96k    17000.96k   141747.20k   384430.08k  2564915.20k
-
-  engine "builtin" (Cavium Octeon modules)
-  aes-128-cbc       9700.32k    86694.40k    91764.36k   646519.47k  2578841.60k
+    engine "af_alg"
+    type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes
+    aes-128-cbc       7952.93k    33862.40k   141754.51k   640204.80k  2575564.80k
+    
+    engine "cryptodev"
+    aes-128-cbc       5654.96k    17000.96k   141747.20k   384430.08k  2564915.20k
+    
+    engine "builtin" (Cavium Octeon modules)
+    aes-128-cbc       9700.32k    86694.40k    91764.36k   646519.47k  2578841.60k
 
 .. Note::
    The above numbers were generated on an EdgeRouter Lite mips64 system using a mainline kernel.
@@ -234,6 +236,7 @@ cconf can be used to modify the crypto priorities on kernels >= 3.2
 References
 ----------
 
+  * https://events.linuxfoundation.org/sites/events/files/slides/lcj-2014-crypto-user.pdf
   * http://article.gmane.org/gmane.linux.kernel.cryptoapi/5292
   * http://article.gmane.org/gmane.linux.kernel.cryptoapi/5296
   * https://bugzilla.mindrot.org/show_bug.cgi?id=1707
