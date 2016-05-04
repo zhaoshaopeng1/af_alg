@@ -1,5 +1,5 @@
 ============================================
- af_alg Kernel Crypto Interface for OpenSSL
+ af_alg: A Kernel Crypto Engine for OpenSSL
 ============================================
 
 .. image:: https://img.shields.io/badge/license-openssl-blue.svg?style=flat
@@ -22,11 +22,11 @@ This is based on RidgeRun's autotools version of the original af_alg project.
 Requirements
 ------------
 
-* linux kernel >= 2.6.38 with crypto modules enabled
+* linux kernel >= 2.6.38 with crypto/user modules enabled
 * openssl source (development headers)
 
-Build
------
+Build from source
+-----------------
 
 ::
 
@@ -46,6 +46,51 @@ Test it
 ::
 
     $ openssl speed -evp aes-128-cbc -engine af_alg -elapsed
+
+The above command can be run with and without the ``-elapsed`` parameter; the
+latter timing is sometimes on the order of the measurement resolution, so it
+may jump around depending on instantaneous machine load (using the ``-elapsed``
+parameter seems more stable).
+
+You can also replace the ``-evp`` argument with sha1, sha256, etc.
+
+.. note:: Check your distribution's path to the openssl engines; it may be the
+          same place as the internal openssl engines, or a separate directory.
+          The default location is ``plugindir=$(libdir)/ssl/engines`` but will
+          most likely change to ``openssl-1.0.2`` instead of just ``ssl``.  If
+          needed you should change it in Makefile.in and re-run configure, make,
+          etc.
+
+Install the Package
+-------------------
+
+Both Gentoo and Debian/Ubuntu packages and the dist tarball source are available,
+in addition to this repository (note that you need to run the autogen.sh script
+before you can run configure if you clone the git repo).  You only need to do
+one of the following.
+
+1. To build the Gentoo package, if it's not yet in the main Portage tree you'll
+   need the overlay, then install it as normal. You can clone it manually or use
+   layman::
+   
+       $ layman -f -a nerdboy -o https://raw.github.com/sarnold/portage-overlay/master/configs/layman.xml
+       $ emerge openssl-afalg-engine
+
+2. To install the Ubuntu package, you'll need to add the PPA first, then update,
+   and then install it.  Browse to the `launchpad ppa page`_ and follow the
+   instructions, or just run the following command to add the ppa::
+   
+       $ sudo add-apt-repository ppa:nerdboy/ppa-crypto
+       $ sudo apt-get update
+       $ sudo apt-get install af-alg
+
+3. Get the source tarball and follow the steps above::
+
+    $ wget http://www.gentoogeek.org/files/af-alg_0.0.1.tar.gz
+
+
+.._launchpad ppa page: https://launchpad.net/~nerdboy/+archive/ubuntu/ppa-crypto
+
 
 Configuration - openssl and kernel config
 -----------------------------------------
