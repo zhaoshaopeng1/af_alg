@@ -1,0 +1,8 @@
+af-alg (0.0.1-2) trusty; urgency=medium
+
+  * Initial release. (Closes: github issue #1)
+  * https://github.com/sarnold/af_alg/issues/1
+  * add small patch for openssl engine path
+
+ -- Steve Arnold (nerdboy) <nerdboy@gentoo.org>  Mon, 02 May 2016 12:48:41 -0700
+

@@ -1,0 +1,12 @@
+Change openssl engine install path to libdir/openssl-1.0.0/engines
+--- a/configure
++++ b/configure
+@@ -12237,7 +12237,7 @@
+ fi
+ 
+ # Set the plugindir where plugins should be installed (for src/Makefile.am)
+-  plugindir="\$(libdir)/ssl/engines"
++  plugindir="\$(libdir)/openssl-1.0.0/engines"
+ 
+ 
+ # Set proper LDFLAGS for plugins
