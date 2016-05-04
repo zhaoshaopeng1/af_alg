@@ -89,7 +89,7 @@ one of the following.
     $ wget http://www.gentoogeek.org/files/af-alg_0.0.1.tar.gz
 
 
-.._launchpad ppa page: https://launchpad.net/~nerdboy/+archive/ubuntu/ppa-crypto
+.. _launchpad ppa page: https://launchpad.net/~nerdboy/+archive/ubuntu/ppa-crypto
 
 
 Configuration - openssl and kernel config
