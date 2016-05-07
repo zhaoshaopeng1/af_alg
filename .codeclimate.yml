@@ -7,6 +7,11 @@ engines:
       threshold: 15
 
 ratings:
-  paths: []
+  paths:
+  - src/**
+  - "**.c"
+  - "**.h"
 
-exclude_paths: []
+exclude_paths:
+- debian/**/*
+
