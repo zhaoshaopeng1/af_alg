@@ -69,18 +69,17 @@ in addition to this repository (note that you need to run the autogen.sh script
 before you can run configure if you clone the git repo).  You only need to do
 one of the following.
 
-1. To build the Gentoo package, if it's not yet in the main Portage tree you'll
-   need the overlay, then install it as normal. You can clone it manually or use
-   layman::
+1. To build the Gentoo package, emerge it::
    
-       $ layman -f -a nerdboy -o https://raw.github.com/sarnold/portage-overlay/master/configs/layman.xml
-       $ emerge openssl-afalg-engine
+       $ emerge af_alg
 
-2. To install the Ubuntu package, you'll need to add the PPA first, then update,
-   and then install it.  Browse to the `launchpad ppa page`_ and follow the
+2. To install the Ubuntu package on x86/amd64, you'll need to add the PPA first, then update,
+   and then install it.  For non-x86 architectures, see the `deb build HOWTO`_.
+   For the binary packages, browse to the `launchpad ppa page`_ and follow the
    instructions, or just run the following command to add the ppa::
    
        $ sudo add-apt-repository ppa:nerdboy/ppa-crypto
+       $ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7774ED19
        $ sudo apt-get update
        $ sudo apt-get install af-alg
 
@@ -88,7 +87,7 @@ one of the following.
 
     $ wget http://www.gentoogeek.org/files/af-alg_0.0.1.tar.gz
 
-
+.. _deb build HOWTO: deb-build-howto.rst
 .. _launchpad ppa page: https://launchpad.net/~nerdboy/+archive/ubuntu/ppa-crypto
 
 
