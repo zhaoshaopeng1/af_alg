@@ -1,5 +1,5 @@
-Install the Debian Build Tools
-==============================
+Debian Package Build from PPA HOWTO
+===================================
 
 First you need to install some dependencies::
 
