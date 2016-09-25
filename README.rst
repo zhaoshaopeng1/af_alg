@@ -85,7 +85,7 @@ one of the following.
 
 3. Get the source tarball and follow the steps above::
 
-    $ wget http://www.gentoogeek.org/files/af-alg_0.0.1.tar.gz
+    $ wget http://dev.gentoo.org/~nerdboy/files/af_alg-0.0.1.tar.gz
 
 .. _deb build HOWTO: deb-build-howto.rst
 .. _launchpad ppa page: https://launchpad.net/~nerdboy/+archive/ubuntu/ppa-crypto
