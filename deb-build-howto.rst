@@ -45,15 +45,15 @@ to something like this::
 
   Build-Depends: debhelper (>= 9), libssl-dev (>= 1.0.1t-1+deb8u2), pkg-config (>= 0.26-1)
 
-For Debian, fetch the package source and make the change above.  Run the following command to get the source:
+For Debian, fetch the package source and make the change above.  Run the following command to get the source::
 
   $ apt-get source af-alg
 
-After editing the control file, build the binary package:
+After editing the control file, build the binary package::
 
   $ debuild -b -uc -us
 
-If all goes well, you can install the resulting binary package.  You should have a package in the current directory called something like af-alg_0.0.1c-1_mips.deb which you can install with the following command:
+If all goes well, you can install the resulting binary package.  You should have a package in the current directory called something like af-alg_0.0.1c-1_mips.deb which you can install with the following command::
 
   $ sudo dpkg -i af-alg_0.0.1c-1_mips.deb
 
