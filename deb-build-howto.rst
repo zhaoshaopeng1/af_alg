@@ -37,7 +37,7 @@ Now you can install the package source and build the package as a normal user (n
 
 3. If your distro is Ubuntu, you're all set, just run the `apt-get source` command with the `--build` flag (the ppa build config is already done).
 
-Otehrwise, if on Debian, you'll need to download the source first, then edit the debian/control file in the source tree.  Use your favorite editor and change the Ubuntu versions to Debian-compatible ones.  Open the debian/control file and change this line::
+Otherwise, if on Debian, you'll need to download the source first, then edit the debian/control file in the source tree.  Use your favorite editor and change the Ubuntu versions to Debian-compatible ones.  Open the debian/control file and change this line::
 
   Build-Depends: debhelper (>= 9), libssl-dev (>= 1.0.1f-1ubuntu2), pkg-config (>= 0.26-1ubuntu4)
 
